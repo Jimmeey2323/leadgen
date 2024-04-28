@@ -1,0 +1,1112 @@
+     <style>
+            /* Global Styles */
+            
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f8f9fa;
+                color: #333;
+                font-size: 14px;
+            }
+            
+            .container-fluid {
+                padding: 20px;
+                box-sizing: border-box;
+                margin: 10px; /* Updated margin to create space on all sides */
+                overflow-y: auto;
+
+            }
+
+         /* Table Styles */
+          .table-responsive {
+              overflow-x: auto;
+              border-radius: 20px;
+              border-bottom: 1px dotted #000;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+              padding: 10px;
+          }
+
+          #dataTable tbody tr:hover {
+              background-color: #f8f8f8 !important;
+              transition: background-color 0.3s ease !important;
+              overflow:hidden;
+          }
+
+
+          #dataTable {
+              width: 100%;
+              border-collapse: collapse;
+              background: #ffffff;
+              border-radius: 8px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              margin: 0;
+          }
+
+          #dataTable th,
+          #dataTable td {
+              border-bottom: 1px dotted #000;
+              padding: 12px;
+              text-align: left;
+              height: 30px;
+              max-width: 200px;
+              font-size: 12px;
+              white-space: nowrap; /* Use nowrap to prevent text wrapping */
+              overflow: hidden; /* Hide overflowing content */
+              text-overflow: ellipsis; /* Display ellipsis for clipped text */
+              text-size-adjust: none;
+          }
+
+
+          #dataTable th {
+              background-color: #0060dbd6;
+              color: #fff;
+              cursor: pointer;
+              height: 20px;
+          }
+
+          /* Define specific widths for each column */
+          #dataTable th:nth-child(1),
+          #dataTable td:nth-child(1),
+          #dataTable th:nth-child(2),
+          #dataTable td:nth-child(2) {
+              width: 50px;
+          }
+
+          #dataTable th:nth-child(4),
+          #dataTable td:nth-child(4),
+          #dataTable th:nth-child(10),
+          #dataTable td:nth-child(10),
+          #dataTable th:nth-child(11),
+          #dataTable td:nth-child(11) {
+              width: 200px;
+          }
+
+          #dataTable th:nth-child(5),
+          #dataTable td:nth-child(5),
+          #dataTable th:nth-child(6),
+          #dataTable td:nth-child(6),
+          #dataTable th:nth-child(7),
+          #dataTable td:nth-child(7),
+          #dataTable th:nth-child(8),
+          #dataTable td:nth-child(8),
+          #dataTable th:nth-child(14),
+          #dataTable td:nth-child(14),
+          #dataTable th:nth-child(16),
+          #dataTable td:nth-child(16),
+          #dataTable th:nth-child(18),
+          #dataTable td:nth-child(18),
+          #dataTable th:nth-child(20),
+          #dataTable td:nth-child(20) {
+              width: 100px;
+          }
+
+          #dataTable th:nth-child(9),
+          #dataTable td:nth-child(9) {
+              width: 250px;
+          }
+
+          #dataTable th:nth-child(13),
+          #dataTable td:nth-child(13) {
+              width: 350px;
+          }
+
+          #dataTable th:nth-child(15),
+          #dataTable td:nth-child(15),
+          #dataTable th:nth-child(17),
+          #dataTable td:nth-child(17),
+          #dataTable th:nth-child(19),
+          #dataTable td:nth-child(19),
+          #dataTable th:nth-child(21),
+          #dataTable td:nth-child(21) {
+            max-width: 200px;
+            text-overflow:hidden;
+          }
+
+          #dataTable tr:nth-child(even) {
+              background-color: #f5f5f5;
+          }
+
+          #dataTable tr:hover {
+              background-color: #f3f3f3;
+          }
+
+          /* Pagination Styles */
+          .pagination {
+              float: right;
+              margin: 0 0 5px;
+          }
+
+          .pagination li a {
+              border: none;
+              font-size: 13px;
+              min-width: 30px;
+              min-height: 30px;
+              color: #999;
+              margin: 0 2px;
+              line-height: 30px;
+              border-radius: 2px !important;
+              text-align: center;
+              padding: 0 6px;
+          }
+
+          .pagination li a:hover {
+              color: #666;
+          }
+
+          .pagination li.active a,
+          .pagination li.active a.page-link {
+              background: #03A9F4;
+          }
+
+          .pagination li.active a:hover {
+              background: #0397d6;
+          }
+
+          .pagination li.disabled i {
+              color: #ccc;
+          }
+
+          .pagination li i {
+              font-size: 16px;
+              padding-top: 6px;
+          }
+
+          .hint-text {
+              float: left;
+              margin-top: 10px;
+              font-size: 13px;
+          }
+
+
+            /* Custom Checkbox Styles */
+            
+            .custom-checkbox {
+                position: relative;
+            }
+            
+            .custom-checkbox input[type="checkbox"] {
+                opacity: 0;
+                position: absolute;
+                margin: 5px 0 0 3px;
+                z-index: 9;
+            }
+            
+            .custom-checkbox label:before {
+                content: '';
+                margin-right: 10px;
+                display: inline-block;
+                vertical-align: text-top;
+                background: white;
+                border: 1px solid #bbb;
+                border-radius: 2px;
+                box-sizing: border-box;
+                z-index: 2;
+            }
+            
+            .custom-checkbox input[type="checkbox"]:checked + label:after {
+                content: '';
+                position: absolute;
+                left: 6px;
+                top: 3px;
+                width: 6px;
+                height: 11px;
+                border: solid #000;
+                border-width: 0 3px 3px 0;
+                transform: rotateZ(45deg);
+            }
+            
+            .custom-checkbox input[type="checkbox"]:checked + label:before {
+                border-color: #03A9F4;
+                background: #03A9F4;
+            }
+            
+            .custom-checkbox input[type="checkbox"]:checked + label:after {
+                border-color: #fff;
+            }
+            
+            .custom-checkbox input[type="checkbox"]:disabled + label:before {
+                color: #b8b8b8;
+                cursor: auto;
+                box-shadow: none;
+                background: #ddd;
+            }
+            /* Floating Form Styles */
+            
+            .floating-form {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: rgba(255, 255, 255, 0.9);
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 1000;
+            }
+            
+            /* Animated Character Styles */
+            
+            .animate-charcter {
+                text-transform: uppercase;
+                background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
+                background-size: auto auto;
+                background-clip: border-box;
+                background-size: 200% auto;
+                color: #fff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: rgba(0, 0, 0, 0); /* Transparent black */;
+                -webkit-text-fill-color: rgba(0, 0, 0, 0); /* Transparent black */;
+                animation: textclip 2s linear infinite;
+                display: inline-block;
+                letter-spacing: 15px; /* You can adjust the value as needed */
+                margin-bottom:5px;
+                font-size: 60px;
+                padding:10px;
+
+            }
+
+            .animate-charcter1{
+                text-transform: uppercase;
+                background-image: linear-gradient(-225deg, #ffff00 0%, #ffffff 29%, #00ff00 67%, #fff800 100%);
+                background-size: auto auto;
+                background-clip: border-box;
+                background-size: 100% auto;
+                color: #ffffff;
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: rgba(0, 0, 0, 0); /* Transparent black */;
+                -webkit-text-fill-color: rgba(0, 0, 0, 0); /* Transparent black */;
+                animation: textclip 2s linear infinite;
+                display: inline-block;
+                letter-spacing: 15px; /* You can adjust the value as needed */
+                margin-bottom:5px;
+                font-size: 40px;
+                padding:10px;
+            }
+            
+            @keyframes textclip {
+                to {
+                    background-position: 200% center;
+                }
+            }
+            /* Form Body Styles */
+            
+            formbody {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f8f9fa;
+                width: 700px;
+            }
+            
+            .formcard {
+                border: none;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                margin-top: 20px;
+            }
+            
+            .formcard-header {
+                background-color: #007bff;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+            }
+            
+            .formcard-formbody {
+                padding: 20px;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            .form-control {
+                border-radius: 5px;
+            }
+            
+            .accordion-button {
+                color: #007bff;
+                font-weight: bold;
+            }
+            
+            .form-check-input {
+                margin-top: 0.2rem;
+            }
+            
+            .btn-primary {
+                background-color: #007bff;
+                border: none;
+                transition: background-color 0.3s;
+                width: 100px;
+            }
+            
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+            
+            .btn-secondary {
+                background-color: #6c757d;
+                border: none;
+                transition: background-color 0.3s;
+            }
+            
+            .btn-secondary:hover {
+                background-color: #545b62;
+            }
+            
+            .button-9 {
+                appearance: button;
+                backface-visibility: hidden;
+                background-color: #405cf5;
+                border-radius: 6px;
+                border-width: 0;
+                box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .1) 0 2px 5px 0, rgba(0, 0, 0, .07) 0 1px 1px 0;
+                box-sizing: border-box;
+                color: #fff;
+                cursor: pointer;
+                font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
+                font-size: 100%;
+                height: 44px;
+                line-height: 1.15;
+                margin: 12px 0 0;
+                margin-bottom: 10px;
+                outline: none;
+                overflow: hidden;
+                padding: 0 25px;
+                position: relative;
+                text-align: center;
+                text-transform: none;
+                transform: translateZ(0);
+                transition: all .2s, box-shadow .08s ease-in;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                width: 20%;
+            }
+            
+            .button-9:disabled {
+                cursor: default;
+            }
+            
+            .button-9:focus {
+                box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+            }
+            .modal-dialog {
+                max-width: 1000px; /* Adjust the max-width as needed */
+                margin: 1.75rem auto;
+                overflow-y: auto;
+            }
+
+            .modal-header {
+                background-color: #007bff;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .modal-header1 {
+                background-color: #333; /* Change the background color */
+                color: #fff; /* Change the text color */
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .modal-header .btn-close {
+                color: white;
+            }
+
+            .modal-content {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                width: 100%; /* Set the width of the modal content to 100% */
+            }
+
+            .custom-table-container {
+                width: 100%; /* Set the width of the table container to 100% */
+            }
+
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+            .form-group label {
+                width: 100%;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+            
+            .form-control {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .accordion-button {
+                color: #000000;
+                font-weight: bold;
+            }
+            
+            .form-check-input {
+                margin-top: 0.2rem;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                width: auto;
+            }
+            
+            .btn-primary {
+                background-color: #007bff;
+                border: none;
+                transition: background-color 0.3s;
+            }
+            
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+            
+            .btn-secondary {
+                background-color: #6c757d;
+                border: none;
+                transition: background-color 0.3s;
+            }
+            
+            .btn-secondary:hover {
+                background-color: #545b62;
+            }
+            
+            /* Button Styles */
+            
+            .button-wrapper {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 10px;
+          }
+
+          .associate-buttons button,
+          .record-buttons button {
+              width: 100%;
+              color: #090909;
+              padding: 0.5em 0.7em;
+              font-size: 11px;
+              border-radius: 0.5em;
+              background: #e8e8e8;
+              border: 1px solid #e8e8e8;
+              transition: all .3s;
+              box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+          }
+
+          
+        
+          .filter-wrapper {
+            display: flex;
+            justify-content: space-between;
+            font-size:10px;
+        }
+
+        .filter-group {
+            flex: 1; /* Use flex property to allow the filter groups to take equal width */
+            width:50%;
+        }
+
+        #linkDropdown {
+            width: 70%; /* Adjust the width of the link dropdown as needed */
+        }
+
+        #copyButton {
+            width: 10%; /* Adjust the width of the copy button as needed */
+        }
+
+        #associateFilter, #statusFilter,#dateFilter, #linkDropdown {
+            width: 100%; /* Set the width of the dropdowns to 100% */
+        }
+
+        #searchText {
+            width: 100%; /* Set the width of the search box to 100% */
+        }
+
+
+          .associate-buttons button:hover,
+          .record-buttons button:hover {
+              border: 1px solid blue;
+              background-color:#00ffff
+              color:#ffffff;
+          }
+
+          .associate-buttons button:active,
+          .record-buttons button:active {
+              color: #ffffff;
+              background-color: #0000ff;
+              box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+          }
+
+            
+            .button-wrapper button {
+                color: #090909;
+                padding: 0.5em 0.7em;
+                font-size: 11px;
+                border-radius: 0.5em;
+                background: #e8e8e8;
+                border: 1px solid #e8e8e8;
+                transition: all .3s;
+                box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+            }
+            
+            .button-wrapper button:hover {
+                border: 1px solid blue;
+            }
+            
+            .button-wrapper button:active {
+                color: #ffffff;
+                background-color: #0000ff;
+                box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
+            }
+            /* Custom Date Modal Styles */
+            
+            #customDateModal {
+                max-width: 800px;
+                margin: 1.75rem auto;
+            }
+            
+            #customDateModal .modal-header {
+                background-color: #007bff;
+                color: white;
+                font-weight: bold;
+                text-align: center;
+            }
+            
+            #customDateModal .modal-header .btn-close {
+                color: white;
+            }
+            
+            #customDateModal .modal-content {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            #customDateModal .modal-body {
+                padding: 20px;
+            }
+            /* Miscellaneous Styles */
+            
+            .alert {
+                /* Add styles for alert if applicable */
+            }
+            /* Add any other styles for new components or elements here */
+
+
+            .button-1 {
+            font-size: 15px;
+            margin-bottom:20px;
+            padding: 0.5em 2em;
+            border: transparent;
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            background: dodgerblue;
+            color: white;
+            border-radius: 4px;
+            }
+
+            .button-1:hover {
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(30,144,255,1) 0%, rgba(0,212,255,1) 100%);
+            }
+
+            .button-1:active {
+            transform: translate(0em, 0.2em);
+            }
+
+            .button1 {
+            width: 10px;
+            height: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            background: red;
+            border: none;
+            border-radius: 1px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+            background: #e62222;
+            }
+
+            .button1, button span {
+            transition: 200ms;
+            }
+
+            .button1 .text {
+            transform: translateX(15px);
+            color: white;
+            font-weight: bold;
+            }
+
+            .button1 .icon {
+            position: absolute;
+            border-left: 1px solid #c41b1b;
+            transform: translateX(10px);
+            height: 5px;
+            width: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+
+            .button1 svg {
+            width: 5px;
+            fill: #eee;
+            }
+
+            .button1:hover {
+            background: #ff3636;
+            }
+
+            .button1:hover .text {
+            color: transparent;
+            }
+
+            .button1:hover .icon {
+            width: 8px;
+            border-left: none;
+            transform: translateX(0);
+            }
+
+            .button1:focus {
+            outline: none;
+            }
+
+            .button1:active .icon svg {
+            transform: scale(0.8);
+            }
+
+            .deleteBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            background-color: #F01E1E; /* Brighter red color */
+            color: #FFFFFF; /* White text color */
+            border: none; /* Remove border for a cleaner look */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+            }
+
+            .deleteBtn:hover {
+            background-color: #000000; /* Darker red color on hover */
+            color:#FF0E00;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
+            }
+
+            .deleteBtn .icon {
+            font-size: 1.5rem; /* Adjust the size of the dustbin icon */
+            margin-right: 0px; /* Add some space between the icon and text */
+            }
+
+            .editBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            background-color: #000000; /* Brighter red color */
+            color: #ffffff; /* White text color */
+            border: none; /* Remove border for a cleaner look */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+            }
+
+            .editBtn:hover {
+            background-color: #FFEF00; /* Darker red color on hover */
+            color:#000000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
+            }
+
+            .editBtn .icon {
+            font-size: 1.5rem; /* Adjust the size of the dustbin icon */
+            margin-right: 0px; /* Add some space between the icon and text */
+            }
+
+            buttonw {
+            width: 3em;
+            height: 2em;
+            border-radius: 10em;
+            font-size: 12px;
+            font-family: inherit;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 6px 6px 12px #c5c5c5,
+                -6px -6px 12px #ffffff;
+            }
+
+            buttonw::before {
+            content: '';
+            width: 0;
+            height: 3em;
+            border-radius: 20em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+            transition: .5s ease;
+            display: block;
+            z-index: -1;
+            }
+
+            buttonw:hover::before {
+            width: 9em;
+            }
+
+            #alertContainer {
+              position: fixed;
+              top: 0;
+              right: 0;
+              padding: 1rem;
+              z-index: 11;
+              max-width: 400px; /* Adjust the maximum width as needed */
+            }
+
+            .alert {
+              display: flex;
+              align-items: center;
+              padding: 1rem;
+              margin-bottom: 1rem;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              background-color: #000000; /* Example background color for danger alerts */
+              color: #f5f5f5; /* Example text color for danger alerts */
+            }
+
+            .alert-icon {
+              margin-right: 1rem;
+            }
+
+            .alert-close {
+              cursor: pointer;
+              margin-left: auto;
+            }
+
+            .button-containerTop {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 200vh; /* Adjust the height as needed */
+              margin-top:20px;
+            }
+
+            .loader {
+              width: 12em;
+              height: 12em;
+            }
+
+            .loader__eye1,
+            .loader__eye2,
+            .loader__mouth1,
+            .loader__mouth2 {
+              animation: eye1 3s ease-in-out infinite;
+            }
+
+            .loader__eye1,
+            .loader__eye2 {
+              transform-origin: 64px 64px;
+            }
+
+            .loader__eye2 {
+              animation-name: eye2;
+            }
+
+            .loader__mouth1 {
+              animation-name: mouth1;
+            }
+
+            .loader__mouth2 {
+              animation-name: mouth2;
+              visibility: hidden;
+            }
+
+            @media (prefers-color-scheme: dark) {
+              :root {
+                --bg: hsl(var(--hue), 90%, 10%);
+                --fg: hsl(var(--hue), 90%, 90%);
+              }
+            }
+
+            @keyframes eye1 {
+              from {
+                transform: rotate(-260deg) translate(0, -56px);
+              }
+
+              50%,
+              60% {
+                animation-timing-function: cubic-bezier(0.17, 0, 0.58, 1);
+                transform: rotate(-40deg) translate(0, -56px) scale(1);
+              }
+
+              to {
+                transform: rotate(225deg) translate(0, -56px) scale(0.35);
+              }
+            }
+
+            @keyframes eye2 {
+              from {
+                transform: rotate(-260deg) translate(0, -56px);
+              }
+
+              50% {
+                transform: rotate(40deg) translate(0, -56px) rotate(-40deg) scale(1);
+              }
+
+              52.5% {
+                transform: rotate(40deg) translate(0, -56px) rotate(-40deg) scale(1, 0);
+              }
+
+              55%,
+              70% {
+                animation-timing-function: cubic-bezier(0, 0, 0.28, 1);
+                transform: rotate(40deg) translate(0, -56px) rotate(-40deg) scale(1);
+              }
+
+              to {
+                transform: rotate(150deg) translate(0, -56px) scale(0.4);
+              }
+            }
+
+            @keyframes mouth1 {
+              from {
+                animation-timing-function: ease-in;
+                stroke-dasharray: 0 351.86;
+                stroke-dashoffset: 0;
+              }
+
+              25% {
+                animation-timing-function: ease-out;
+                stroke-dasharray: 175.93 351.86;
+                stroke-dashoffset: 0;
+              }
+
+              50% {
+                animation-timing-function: steps(1, start);
+                stroke-dasharray: 175.93 351.86;
+                stroke-dashoffset: -175.93;
+                visibility: visible;
+              }
+
+              75%,
+              to {
+                visibility: hidden;
+              }
+            }
+
+            @keyframes mouth2 {
+              from {
+                animation-timing-function: steps(1, end);
+                visibility: hidden;
+              }
+
+              50% {
+                animation-timing-function: ease-in-out;
+                visibility: visible;
+                stroke-dashoffset: 0;
+              }
+
+              to {
+                stroke-dashoffset: -351.86;
+              }
+            }
+
+            /* Additional styles for fully transparent background */
+            #spinnerModal {
+              background-color: rgba(0, 0, 0, 0);
+            }
+
+            #spinnerModal .modal-content {
+              background-color: transparent;
+              border: none;
+            }
+
+            #spinnerModal {
+              background-color: rgba(0, 0, 0, 0) !important; /* Important to override Bootstrap styles */
+            }
+
+            #spinnerModal .modal-content {
+              background-color: transparent;
+              border: none;
+              box-shadow: none; /* Remove box-shadow if needed */
+            }
+
+            #countFilledCells {
+              background-color: #e0e0e0;
+              padding: 10px;
+              margin-bottom: 10px;
+          }
+
+          #filledCellCount {
+              font-weight: bold;
+              color: #4CAF50; /* Green color */
+          }
+
+          :root {
+                      --momenceColorBackground: #FBFBFB;
+                      --momenceColorPrimary: 48, 150, 255;
+                      --momenceColorBlack: 3, 1, 13;
+                  }
+
+          #dashboard {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+      }
+
+      canvas {
+          max-width: 400px;
+          margin: 10px;
+      }
+
+       .custom-table {
+        width: 100%; /* Adjust the width as needed */
+    }
+
+    /* tooltip settings 👇 */
+
+.copy {
+  /* button */
+  --button-bg: #ffffff;
+  --button-hover-bg: #464646;
+  --button-text-color: #474747;
+  --button-hover-text-color: #8bb9fe;
+  --button-border-radius: 10px;
+  --button-diameter: 36px;
+  --button-outline-width: 1px;
+  --button-outline-color: rgb(141, 141, 141);
+  /* tooltip */
+  --tooltip-bg: #f4f3f3;
+  --toolptip-border-radius: 4px;
+  --tooltip-font-family: Menlo, Roboto Mono, monospace;
+  /* 👆 this field should not be empty */
+  --tooltip-font-size: 12px;
+  /* 👆 this field should not be empty */
+  --tootip-text-color: rgb(50, 50, 50);
+  --tooltip-padding-x: 7px;
+  --tooltip-padding-y: 7px;
+  --tooltip-offset: 8px;
+  /* --tooltip-transition-duration: 0.3s; */
+  /* 👆 if you need a transition, 
+  just remove the comment,
+  but I didn't like the transition :| */
+}
+
+.copy {
+  box-sizing: border-box;
+  width: var(--button-diameter);
+  height: var(--button-diameter);
+  border-radius: var(--button-border-radius);
+  background-color: var(--button-bg);
+  color: var(--button-text-color);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+.tooltip {
+  position: absolute;
+  opacity: 0;
+  visibility: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font: var(--tooltip-font-size) var(--tooltip-font-family);
+  color: var(--tootip-text-color);
+  background: var(--tooltip-bg);
+  padding: var(--tooltip-padding-y) var(--tooltip-padding-x);
+  border-radius: var(--toolptip-border-radius);
+  pointer-events: none;
+  transition: all var(--tooltip-transition-duration)
+    cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.tooltip::before {
+  content: attr(data-text-initial);
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--tooltip-padding-y) / 2 * -1);
+  width: var(--tooltip-padding-y);
+  height: var(--tooltip-padding-y);
+  background: inherit;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  z-index: -999;
+  pointer-events: none;
+}
+
+.copy svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkmark {
+  display: none;
+}
+
+/* actions */
+
+.copy:hover .tooltip,
+.copy:focus:not(:focus-visible) .tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: calc((100% + var(--tooltip-offset)) * -1);
+}
+
+.copy:focus:not(:focus-visible) .tooltip::before {
+  content: attr(data-text-end);
+}
+
+.copy:focus:not(:focus-visible) .clipboard {
+  display: none;
+}
+
+.copy:focus:not(:focus-visible) .checkmark {
+  display: block;
+}
+
+.copy:hover,
+.copy:focus {
+  background-color: var(--button-hover-bg);
+}
+
+.copy:active {
+  outline: var(--button-outline-width) solid var(--button-outline-color);
+}
+
+.copy:hover svg {
+  color: var(--button-hover-text-color);
+}
+
+  .Copybutton-container {
+    display: flex;
+    align-items: center;
+  }
+  #copyButton {
+    width: 50px;
+    background: none;
+    border: none;
+    color: black; /* Set text color to black */
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    padding: 0; /* Remove padding */
+    margin-left:0px;
+  }
+
+  .tooltip {
+    margin-right: 5px; /* Add margin between text and icon */
+  }
+
+  .clipboard, .checkmark {
+    width: 20px; /* Set icon width */
+    height: 20px; /* Set icon height */
+  }
+        </style>
