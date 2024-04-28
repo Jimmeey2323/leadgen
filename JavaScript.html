@@ -1,0 +1,43 @@
+<script>
+  /*
+  *THIS FUNCTION CALLS THE getData() FUNCTION IN THE Code.gs FILE, 
+  *AND PASS RETURNED DATA TO showData() FUNCTION
+  */
+  google.script.run.withSuccessHandler(showData).getData();
+ 
+  //THIS FUNCTION GENERATE THE DATA TABLE FROM THE DATA ARRAY
+  function showData(dataArray){
+    $(document).ready(function(){
+      $('#dataTable').DataTable({
+        data: dataArray,
+        //CHANGE THE TABLE HEADINGS BELOW TO MATCH WITH YOUR SELECTED DATA RANGE
+        columns: [
+        {title:"ID", field:"ID"},
+        {title:"First Name", field:"First Name"},
+        {title:"Last Name", field:"Last Name"},
+        {title:"Email", field:"Email"},
+        {title:"Last Contacted At", field:"Last Contacted At"},
+        {title:"Lead Health", field:"Lead Health"},
+        {title:"Created At", field:"Created At"},
+        {title:"Phone Number", field:"Phone Number"},
+        {title:"Source", field:"Source"},
+        {title:"Stage", field:"Stage"},
+        {title:"Member ID", field:"Member ID"},
+        {title:"Converted To Customer At", field:"Converted To Customer At"},
+        {title:"Lead Handler Name", field:"Lead Handler Name"},
+        {title:"Date Created", field:"Date Created"},
+        {title:"Remarks", field:"Remarks"},
+        {title:"Follow Up Date - 1", field:"Follow Up Date - 1"},
+        {title:"Follow Up Comments - 1", field:"Follow Up Comments - 1"},
+        {title:"Follow Up Date - 2", field:"Follow Up Date - 2"},
+        {title:"Follow Up Comments - 2", field:"Follow Up Comments - 2"},
+        {title:"Follow Up Date - 3", field:"Follow Up Date - 3"},
+        {title:"Follow Up Comments - 3", field:"Follow Up Comments - 3"},
+        {title:"Follow Up Date - 4", field:"Follow Up Date - 4"},
+        {title:"Follow Up Comments - 4", field:"Follow Up Comments - 4"}
+        ]
+      });
+    });
+  }
+</script>
+
